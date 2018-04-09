@@ -1,0 +1,7 @@
+A = LOAD 'input/pig/corrupt/missing_fields';
+
+DUMP A;
+
+B = FILTER A BY SIZE(TOTUPLE(*)) > 1;
+
+DUMP B;

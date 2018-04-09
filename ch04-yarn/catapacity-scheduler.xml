@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<configuration>
+    <property>
+        <name>yarn.scheduler.capacity.root.queues</name>
+        <value>prod,dev</value>
+    </property>
+    <property>
+        <name>yarn.scheduler.capacity.root.dev.queues</name>
+        <value>eng,science</value>
+    </property>
+    <!-- prod队列实际可能占用全部集群资源   -->
+    <property>
+        <name>yarn.scheduler.capacity.root.prod.capacity</name>
+        <value>40</value>
+    </property>
+    <property>
+        <name>yarn.scheduler.capacity.root.dev.capacity</name>
+        <value>60</value>
+    </property>
+    <property>
+        <name>yarn.scheduler.capacity.root.dev.maximum-capacity</name>
+        <value>75</value>
+        <!-- dev的最大容量设置为75%，因此prod队列能立刻使用的资源比例总是能达到25% -->
+    </property>
+    <!-- eng或science中的队列实际可能占用dev队列的所有容量 -->
+    <property>
+        <name>yarn.scheduler.capacity.root.dev.eng.capacity</name>
+        <value>50</value>
+    </property>
+    <property>
+        <name>yarn.scheduler.capacity.root.dev.science.capacity</name>
+        <value>50</value>
+    </property>
+</configuration>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- 实际使用时，文件名称改为集群名称，不要以cluster泛指，如hadoop-xxx.xml（xxx指集群名称） -->
+<!-- 模板文件，搭建集群时，主机名需做适当修改 -->
+<configuration>
+
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://namenode/</value>
+    </property>
+
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.address</name>
+        <value>resourcemanager:8032</value>
+    </property>
+
+</configuration>

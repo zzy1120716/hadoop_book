@@ -1,0 +1,29 @@
+records = LOAD 'input/ncdc/micro-tab/sample_corrupt.txt'
+    AS (year:chararray, temperature:int, quality:int);
+DUMP records;
+
+corrupt_records = FILTER records BY temperature is null;
+DUMP corrupt_records;
+
+grouped = GROUP corrupt_records ALL;
+all_grouped = FOREACH grouped GENERATE group, COUNT(corrupt_records);
+DUMP all_grouped;
+
+SPLIT records INTO good_records IF temperature is not null,
+    bad_records OTHERWISE;
+DUMP good_records;
+
+DUMP bad_records;
+
+records = LOAD 'input/ncdc/micro-tab/sample_corrupt.txt'
+    AS (year:chararray, temperature, quality:int);
+DUMP records;
+
+filtered_records = FILTER records BY temperature != 9999 AND
+    quality IN (0, 1, 4, 5, 9);
+
+grouped_records = GROUP filtered_records BY year;
+
+max_temp = FOREACH grouped_records GENERATE group,
+    MAX(filtered_records.temperature);
+DUMP max_temp;

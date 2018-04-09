@@ -1,0 +1,11 @@
+A = LOAD 'input/pig/sort/A';
+DUMP A;
+
+B = ORDER A BY $0, $1 DESC;
+DUMP B;
+
+C = FOREACH B GENERATE *;
+DUMP C;
+
+D = LIMIT B 2;
+DUMP D;

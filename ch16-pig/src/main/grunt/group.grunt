@@ -1,0 +1,11 @@
+A = LOAD 'input/pig/group/A';
+DUMP A;
+
+B = GROUP A BY SIZE($1);
+DUMP B;
+
+C = GROUP A ALL;
+DUMP C;
+
+D = FOREACH C GENERATE COUNT(A);
+DUMP D;

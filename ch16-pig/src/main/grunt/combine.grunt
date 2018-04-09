@@ -1,0 +1,11 @@
+A = LOAD 'input/pig/combine/A' AS (f0:int, f1:int);
+B = LOAD 'input/pig/combine/B' AS (f0:chararray, f1:chararray, f2:int);
+
+DUMP A;
+DUMP B;
+C = UNION A, B;
+DUMP C;
+
+DESCRIBE A;
+DESCRIBE B;
+DESCRIBE C;

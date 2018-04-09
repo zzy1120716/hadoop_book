@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.zzy.hadoopbook</groupId>
+        <artifactId>hadoop-meta</artifactId>
+        <version>4.0</version>
+        <relativePath>../hadoop-meta/pom.xml</relativePath>
+    </parent>
+    <groupId>com.zzy.hadoopbook</groupId>
+    <artifactId>ch08-mr-types</artifactId>
+    <packaging>jar</packaging>
+    <version>4.0</version>
+    <name>第8章：MapReduce的类型与格式</name>
+    <dependencies>
+        <dependency>
+            <groupId>com.zzy.hadoopbook</groupId>
+            <artifactId>common</artifactId>
+            <version>4.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../common/target/common-4.0.jar</systemPath>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>com.zzy.hadoopbook</groupId>
+            <artifactId>ch02-mr-intro</artifactId>
+            <version>4.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../ch02-mr-intro/target/ch02-mr-intro-4.0.jar</systemPath>
+        </dependency>-->
+
+        <dependency>
+            <groupId>com.zzy.hadoopbook</groupId>
+            <artifactId>ch06-mr-dev</artifactId>
+            <version>4.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../ch06-mr-dev/hadoop-examples.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+    
+</project>

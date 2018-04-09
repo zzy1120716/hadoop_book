@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.zzy.hadoopbook</groupId>
+    <artifactId>root</artifactId>
+    <packaging>pom</packaging>
+    <version>4.0</version>
+    <name>Hadoop: 权威指南, 示例代码</name>
+    <url>http://hadoopbook.com</url>
+
+    <modules>
+        <module>book</module>
+        <module>common</module>
+        <module>ch02-mr-intro</module>
+        <module>ch03-hdfs</module>
+        <module>ch05-io</module>
+        <module>ch06-mr-dev</module>
+        <module>ch08-mr-types</module>
+        <module>ch09-mr-features</module>
+        <module>ch12-avro</module>
+        <module>hadoop-meta</module>
+        <module>ch13-parquet</module>
+        <module>ch15-sqoop</module>
+        <module>ch16-pig</module>
+    </modules>
+</project>

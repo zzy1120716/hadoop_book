@@ -1,0 +1,5 @@
+A = LOAD 'input/pig/foreach/A'
+    AS (f0:chararray, f1:chararray, f2:int);
+
+C = STREAM A THROUGH `cut -f 2`;
+DUMP C;

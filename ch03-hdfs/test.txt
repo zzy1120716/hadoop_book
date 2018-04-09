@@ -1,0 +1,2 @@
+Hello, world!
+This is my first file to upload to the HDFS.

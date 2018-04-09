@@ -1,0 +1,5 @@
+--开启调试
+set debug on
+
+--设置并行度
+set default_parallel 30

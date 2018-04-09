@@ -1,0 +1,41 @@
+--平面化
+
+C = LOAD 'input/pig/types/C'
+    AS (f0:chararray, f1:chararray);
+
+D = FOREACH C GENERATE TOTUPLE(TOTUPLE(f0), TOTUPLE(f1));
+DUMP D;
+--(((a),(pomegranate)))
+--(((b),(apple)))
+
+F = FOREACH D GENERATE FLATTEN($0);
+DUMP F;
+--((a),(pomegranate))
+--((b),(apple))
+--去除了一级嵌套
+
+B = FOREACH C GENERATE TOBAG(f0, f1);
+DUMP B;
+--({(a),(pomegranate)})
+--({(b),(apple)})
+
+F = FOREACH B GENERATE FLATTEN($0);
+DUMP F;
+--(a)
+--(pomegranate)
+--(b)
+--(apple)
+--包中的元组被转化为元组
+
+B = FOREACH C GENERATE f0, TOBAG(f1, f1);
+DUMP B;
+--(a,{(pomegranate),(pomegranate)})
+--(b,{(apple),(apple)})
+
+F = FOREACH B GENERATE $0, FLATTEN($1);
+DUMP F;
+--(a,pomegranate)
+--(a,pomegranate)
+--(b,apple)
+--(b,apple)
+--包中的元组被附加到最上层

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- core-site.xml -->
+<configuration>
+    <!--设置文件系统-->
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://localhost:9000/</value>
+    </property>
+    <!--设置临时目录-->
+    <!--<property>
+        <name>hadoop.tmp.dir</name>
+        <value>/Users/zzy/hadoop_tmp</value>
+    </property>-->
+</configuration>

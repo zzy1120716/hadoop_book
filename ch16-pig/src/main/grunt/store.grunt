@@ -1,0 +1,4 @@
+A = LOAD 'input/pig/foreach/A';
+
+STORE A INTO 'out' USING PigStorage(':');
+cat out

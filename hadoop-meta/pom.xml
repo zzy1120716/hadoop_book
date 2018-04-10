@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>../ch17-hive</module>
+        <module>docs</module>
     </modules>
     <parent>
         <groupId>com.zzy.hadoopbook</groupId>

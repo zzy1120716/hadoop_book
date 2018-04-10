@@ -15,6 +15,7 @@
       <module fileurl="file://$PROJECT_DIR$/ch16-pig/ch16-pig.iml" filepath="$PROJECT_DIR$/ch16-pig/ch16-pig.iml" />
       <module fileurl="file://$PROJECT_DIR$/ch17-hive/ch17-hive.iml" filepath="$PROJECT_DIR$/ch17-hive/ch17-hive.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/docs/docs.iml" filepath="$PROJECT_DIR$/docs/docs.iml" />
       <module fileurl="file://$PROJECT_DIR$/hadoop-meta/hadoop-meta.iml" filepath="$PROJECT_DIR$/hadoop-meta/hadoop-meta.iml" />
       <module fileurl="file://$PROJECT_DIR$/root.iml" filepath="$PROJECT_DIR$/root.iml" />
     </modules>

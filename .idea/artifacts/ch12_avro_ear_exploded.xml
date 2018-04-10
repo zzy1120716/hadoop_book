@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="ch12-avro:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ch12_avro_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ch12-avro/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>

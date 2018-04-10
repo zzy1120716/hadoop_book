@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- hdfs-site.xml -->
+<configuration>
+    <!-- 备份数 -->
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+    <!--<property>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:/Users/zzy/yarn/yarn_data/hdfs/namenode</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:/Users/zzy/yarn/yarn_data/hdfs/datanode</value>
+    </property>-->
+</configuration>

@@ -33,7 +33,7 @@ public class IsGoodQuality extends FilterFunc {
 
     @Override
     public List<FuncSpec> getArgToFuncMapping() throws FrontendException {
-        List<FuncSpec> funcSpecs = new ArrayList<>();
+        List<FuncSpec> funcSpecs = new ArrayList<FuncSpec>();
         funcSpecs.add(new FuncSpec(this.getClass().getName(), new Schema(new Schema.FieldSchema(null, DataType.INTEGER))));
         return funcSpecs;
     }

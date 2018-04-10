@@ -234,6 +234,7 @@ DROP TABLE external_table;
 ```
 
 ### 2. 分区、桶
+#### 分区
 创建带分区的表：
 ```
 CREATE TABLE logs (ts BIGINT, line STRING)
@@ -248,4 +249,21 @@ PARTITION (dt='2001-01-01', country='GB');
 查看分区：
 ```
 SHOW PARTITIONS logs;
+```
+SELECT语句中使用分区列：
+```
+SELECT ts, dt, line
+FROM logs
+WHERE country='GB';
+```
+#### 桶
+指定划分桶所用的列和桶的个数：
+```
+CREATE TABLE bucketed_users (id INT, name STRING)
+CLUSTERED BY (id) INTO 4 BUCKETS;
+```
+声明一个表，使用排序桶：
+```
+CREATE TABLE bucketed_users (id INT, name STRING)
+CLUSTERED BY (id) SORTED BY (id ASC) INTO 4 BUCKETS;
 ```

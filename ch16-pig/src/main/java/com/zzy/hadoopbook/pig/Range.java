@@ -44,7 +44,7 @@ public class Range {
         if(rangeSpec.length() == 0) {
             return Collections.emptyList();
         }
-        List<Range> ranges = new ArrayList<>();
+        List<Range> ranges = new ArrayList<Range>();
         String[] specs = rangeSpec.split(",");
         for(String spec : specs) {
             String[] split = spec.split("-");

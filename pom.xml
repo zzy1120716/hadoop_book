@@ -22,5 +22,6 @@
         <module>ch13-parquet</module>
         <module>ch15-sqoop</module>
         <module>ch16-pig</module>
+        <module>docs</module>
     </modules>
 </project>

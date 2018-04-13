@@ -1,0 +1,55 @@
+DROP TABLE IF EXISTS sales;
+CREATE TABLE sales (name STRING, id INT)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
+
+DROP TABLE IF EXISTS things;
+CREATE TABLE things (id INT, name STRING)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
+
+LOAD DATA LOCAL INPATH 'input/hive/joins/sales.txt'
+OVERWRITE INTO TABLE sales;
+
+LOAD DATA LOCAL INPATH 'input/hive/joins/things.txt'
+OVERWRITE INTO TABLE things;
+
+SELECT * FROM sales;
+SELECT * FROM things;
+
+--内连接
+--1.
+SELECT sales.*, things.*
+FROM sales JOIN things ON (sales.id = things.id);
+--2.
+SELECT sales.*, things.*
+FROM sales, things WHERE sales.id = things.id;
+--3. EXPLAIN
+EXPLAIN
+SELECT sales.*, things.*
+FROM sales JOIN things ON (sales.id = things.id);
+
+EXPLAIN EXTENDED
+SELECT sales.*, things.*
+FROM sales JOIN things ON (sales.id = things.id);
+
+--外连接
+--1. 左外连接
+SELECT sales.*, things.*
+FROM sales LEFT OUTER JOIN things ON (sales.id = things.id);
+--2. 右外连接
+SELECT sales.*, things.*
+FROM sales RIGHT OUTER JOIN things ON (sales.id = things.id);
+--3. 全外连接
+SELECT sales.*, things.*
+FROM sales FULL OUTER JOIN things ON (sales.id = things.id);
+
+--半连接
+--1. 原始查询语句
+SELECT * FROM things
+WHERE things.id IN (SELECT id FROM sales);
+--2. 改为半连接
+SELECT *
+FROM things LEFT SEMI JOIN sales ON (sales.id = things.id);
+
+--map连接
+SELECT /*+ MAPJOIN(things) */ sales.*, things.*
+FROM sales JOIN things ON (sales.id = things.id);

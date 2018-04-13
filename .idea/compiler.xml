@@ -23,20 +23,20 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="book" target="1.5" />
-      <module name="ch02-mr-intro" target="1.5" />
-      <module name="ch03-hdfs" target="1.5" />
-      <module name="ch05-io" target="1.5" />
+      <module name="ch02-mr-intro" target="1.8" />
+      <module name="ch03-hdfs" target="1.8" />
+      <module name="ch05-io" target="1.8" />
       <module name="ch06-mr-dev" target="1.6" />
-      <module name="ch08-mr-types" target="1.5" />
-      <module name="ch09-mr-features" target="1.5" />
-      <module name="ch12-avro" target="1.5" />
-      <module name="ch13-parquet" target="1.5" />
-      <module name="ch15-sqoop" target="1.5" />
-      <module name="ch16-pig" target="1.5" />
-      <module name="ch17-hive" target="1.5" />
-      <module name="common" target="1.5" />
-      <module name="docs" target="1.5" />
-      <module name="hadoop-meta" target="1.5" />
+      <module name="ch08-mr-types" target="1.8" />
+      <module name="ch09-mr-features" target="1.8" />
+      <module name="ch12-avro" target="1.8" />
+      <module name="ch13-parquet" target="1.8" />
+      <module name="ch15-sqoop" target="1.8" />
+      <module name="ch16-pig" target="1.8" />
+      <module name="ch17-hive" target="1.8" />
+      <module name="common" target="1.8" />
+      <module name="docs" target="1.8" />
+      <module name="hadoop-meta" target="1.8" />
       <module name="root" target="1.5" />
     </bytecodeTargetLevel>
   </component>

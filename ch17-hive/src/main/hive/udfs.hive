@@ -1,0 +1,88 @@
+--1. 使用Hive自带UDTF函数
+DROP TABLE IF EXISTS arrays;
+
+CREATE TABLE arrays (x ARRAY<STRING>)
+ROW FORMAT DELIMITED
+  FIELDS TERMINATED BY '\001'
+  COLLECTION ITEMS TERMINATED BY '\002';
+
+LOAD DATA LOCAL INPATH 'input/hive/udfs/arrays.txt'
+OVERWRITE INTO TABLE arrays;
+
+SELECT * FROM arrays;
+
+SELECT explode(x) AS y FROM arrays;
+
+--2. 用户UDF
+DROP TABLE IF EXISTS dummy;
+
+CREATE TABLE dummy (value STRING);
+LOAD DATA LOCAL INPATH 'input/hive/dummy.txt'
+OVERWRITE INTO TABLE dummy;
+
+--a. 注册函数到metastore
+dfs -mkdir -p /user/zzy/jars;
+dfs -put hive-examples.jar /user/zzy/jars;
+CREATE FUNCTION strip AS 'com.zzy.hadoopbook.hive.Strip'
+USING JAR 'hdfs://localhost:9000/user/zzy/jars/hive-examples.jar';
+
+SELECT strip('  bee   ') FROM dummy;
+SELECT strip('banana', 'ab') FROM dummy;
+
+--删除函数
+DROP FUNCTION strip;
+
+--Except exception
+SELECT strip('  bee   ') FROM dummy;
+
+--b. 创建临时函数
+ADD JAR hive-examples.jar;
+CREATE TEMPORARY FUNCTION strip AS 'com.zzy.hadoopbook.hive.Strip';
+
+SELECT strip('  bee   ') FROM dummy;
+SELECT strip('banana', 'ab') FROM dummy;
+
+--大小写不敏感
+SELECT STRIP('  bee   ') FROM dummy;
+
+--删除临时函数
+DROP TEMPORARY FUNCTION strip;
+
+--Except exception
+SELECT strip('  bee   ') FROM dummy;
+
+--3. 用户UDAF
+--Maximum
+DROP TABLE IF EXISTS records;
+
+CREATE TABLE records (year STRING, temperature INT, quality INT)
+ROW FORMAT DELIMITED
+  FIELDS TERMINATED BY '\t';
+
+LOAD DATA LOCAL INPATH 'input/ncdc/micro-tab/sample.txt'
+OVERWRITE INTO TABLE records;
+
+CREATE TEMPORARY FUNCTION maximum AS 'com.zzy.hadoopbook.hive.Maximum';
+
+CREATE FUNCTION maximum AS 'com.zzy.hadoopbook.hive.Maximum'
+USING JAR 'hdfs://localhost:9000/user/zzy/jars/hive-examples.jar';
+
+SELECT maximum(temperature) FROM records;
+
+--Mean
+DROP TABLE IF EXISTS records3;
+
+CREATE TABLE records3 (year STRING, temperature DOUBLE, quality INT)
+ROW FORMAT DELIMITED
+  FIELDS TERMINATED BY '\t';
+
+LOAD DATA LOCAL INPATH 'input/ncdc/micro-tab/sample.txt'
+OVERWRITE INTO TABLE records3;
+
+ADD JAR hive-examples.jar;
+CREATE TEMPORARY FUNCTION mean AS 'com.zzy.hadoopbook.hive.Mean';
+
+CREATE FUNCTION mean AS 'com.zzy.hadoopbook.hive.Mean'
+USING JAR 'hdfs://localhost:9000/user/zzy/jars/hive-examples.jar';
+
+SELECT mean(temperature) FROM records3;

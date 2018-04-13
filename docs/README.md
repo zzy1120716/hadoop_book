@@ -30,6 +30,15 @@ vi ~/.bash_profile
 export HADOOP_HOME=/opt/hadoop
 export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$JAVA_HOME/bin:$PATH
 ```
+创建文件存放路径：
+```
+mkdir -p mydata/hdfs/namenode
+mkdir -p mydata/hdfs/datanode
+mkdir -p mydata/hdfs/tmp
+chmod -R 755 mydata/hdfs/namenode
+chmod -R 755 mydata/hdfs/datanode
+chmod -R 755 mydata/hdfs/tmp
+```
 配置伪分布模式：
 ```
 vi /opt/hadoop/etc/hadoop/core-site.xml
@@ -38,6 +47,11 @@ vi /opt/hadoop/etc/hadoop/core-site.xml
         <name>fs.defaultFS</name>
         <value>hdfs://localhost:9000</value>
     </property>
+    <!-- 配置临时文件路径 -->
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/home/zzy/mydata/hdfs/tmp</value>
+    </property>
 </configuration>
 
 vi /opt/hadoop/etc/hadoop/hdfs-site.xml
@@ -45,6 +59,15 @@ vi /opt/hadoop/etc/hadoop/hdfs-site.xml
     <property>
         <name>dfs.replication</name>
         <value>1</value>
+    </property>
+    <!-- 配置文件存储路径 -->
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>/home/zzy/mydata/hdfs/namenode</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>/home/zzy/mydata/hdfs/datanode</value>
     </property>
 </configuration>
 ```
@@ -138,6 +161,102 @@ hive
 sudo mkdir /opt/hive/lib/backup
 sudo mv /opt/hive/lib/log4j-slf4j-impl-2.6.2.jar /opt/hive/lib/backup
 ```
-安装mysql：
+### 1.3.1 安装mysql
 ```
+sudo apt-get install mysql-server
+sudo apt install mysql-client
+sudo apt install libmysqlclient-dev
+```
+测试安装是否成功：
+```
+sudo apt-get install net-tools
+sudo netstat -tap | grep mysql
+```
+安装后初次登录，并设置root密码：
+https://www.pomelolee.com/815.html
+```
+sudo cat /etc/mysql/debian.cnf
+host     = localhost
+user     = debian-sys-maint
+password = d47tE2YfUktxbRXZ
+socket   = /var/run/mysqld/mysqld.sock
+
+mysql -udebian-sys-maint -p
+
+grant all privileges on *.* to 'root'@'localhost' identified by 'password';
+flush privileges;
+```
+解决access denied问题：
+```
+use mysql;
+select user, plugin, authentication_string  from user;
+delete from user where user='root' and plugin='auth_socket';
+
+sudo service mysql restart;
+
+mysql_upgrade -uroot -p
+```
+创建一个hive用户：
+```
+GRANT ALL ON *.* TO 'hive'@'%' IDENTIFIED BY 'hive';
+GRANT ALL ON *.* TO 'hive'@'localhost' IDENTIFIED BY 'hive';
+FLUSH PRIVILEGES;
+```
+### 1.3.2 Hive配置
+添加mysql-connector-j驱动：
+```
+sudo mv mysql-connector-java-5.1.46-bin.jar  /opt/hive/lib/
+```
+创建目录：
+```
+hadoop fs -mkdir       /tmp
+hadoop fs -mkdir -p    /user/hive/warehouse
+hadoop fs -chmod g+w   /tmp
+hadoop fs -chmod g+w   /user/hive/warehouse
+```
+修改hive-site.xml配置文件：
+```
+sudo vi /opt/hive/conf/hive-site.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+    <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true</value>
+    </property>
+
+    <property>
+        <name>javax.jdo.option.ConnectionDriverName</name>
+        <value>com.mysql.jdbc.Driver</value>
+    </property>
+
+    <property>
+        <name>javax.jdo.option.ConnectionUserName</name>
+        <value>hive</value>
+    </property>
+
+    <property>
+        <name>javax.jdo.option.ConnectionPassword</name>
+        <value>hive</value>
+    </property>
+</configuration>
+```
+修改hive-env.sh变量配置：
+```
+cd /opt/hive/conf
+sudo cp hive-env.sh.template hive-env.sh
+
+sudo vi hive-env.sh
+HADOOP_HOME=/opt/hadoop
+export HIVE_CONF_DIR=/opt/hive/conf
+```
+自行生成metadata：
+```
+schematool -dbType mysql -initSchema
+```
+运行hive：
+```
+hive
 ```

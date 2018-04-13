@@ -1,0 +1,27 @@
+DROP TABLE IF EXISTS records2;
+
+CREATE TABLE records2 (station STRING, year STRING, temperature INT, quality INT)
+ROW FORMAT DELIMITED
+  FIELDS TERMINATED BY '\t';
+
+LOAD DATA LOCAL INPATH 'input/ncdc/micro-tab/sample2.txt'
+OVERWRITE INTO TABLE records2;
+
+CREATE VIEW valid_records
+AS
+SELECT *
+FROM records2
+WHERE temperature != 9999 AND quality IN (0, 1, 4, 5, 9);
+
+SHOW TABLES;
+
+DESCRIBE EXTENDED valid_records;
+
+CREATE VIEW max_temperatures (station, year, max_temperature)
+AS
+SELECT station, year, MAX(temperature) FROM valid_records
+GROUP BY station, year;
+
+SELECT station, year, AVG(max_temperature)
+FROM max_temperatures
+GROUP BY station, year;

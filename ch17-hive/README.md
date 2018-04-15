@@ -215,6 +215,7 @@ SHOW FUNCTIONS;
 ```
 DESCRIBE FUNCTION length;
 ```
+
 #### 类型转换(hive/conversions.hive)
 
 ## 6. 表
@@ -319,6 +320,8 @@ TRUNCATE TABLE my_table;
 ```
 CREATE TABLE new_table LIKE existing_table;
 ```
+
+### 7. 使用索引(hive/indexes.hive)
 
 ## 7. 查询
 ### 1. 排序和聚集

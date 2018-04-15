@@ -14,6 +14,7 @@
       <module fileurl="file://$PROJECT_DIR$/ch15-sqoop/ch15-sqoop.iml" filepath="$PROJECT_DIR$/ch15-sqoop/ch15-sqoop.iml" />
       <module fileurl="file://$PROJECT_DIR$/ch16-pig/ch16-pig.iml" filepath="$PROJECT_DIR$/ch16-pig/ch16-pig.iml" />
       <module fileurl="file://$PROJECT_DIR$/ch17-hive/ch17-hive.iml" filepath="$PROJECT_DIR$/ch17-hive/ch17-hive.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch18-crunch/ch18-crunch.iml" filepath="$PROJECT_DIR$/ch18-crunch/ch18-crunch.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/docs/docs.iml" filepath="$PROJECT_DIR$/docs/docs.iml" />
       <module fileurl="file://$PROJECT_DIR$/hadoop-meta/hadoop-meta.iml" filepath="$PROJECT_DIR$/hadoop-meta/hadoop-meta.iml" />

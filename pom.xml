@@ -23,5 +23,6 @@
         <module>ch15-sqoop</module>
         <module>ch16-pig</module>
         <module>docs</module>
+        <module>ch18-crunch</module>
     </modules>
 </project>

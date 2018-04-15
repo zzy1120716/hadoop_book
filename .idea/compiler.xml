@@ -17,6 +17,7 @@
         <module name="ch15-sqoop" />
         <module name="ch16-pig" />
         <module name="ch17-hive" />
+        <module name="ch18-crunch" />
         <module name="common" />
         <module name="docs" />
       </profile>
@@ -34,6 +35,7 @@
       <module name="ch15-sqoop" target="1.8" />
       <module name="ch16-pig" target="1.8" />
       <module name="ch17-hive" target="1.8" />
+      <module name="ch18-crunch" target="1.8" />
       <module name="common" target="1.8" />
       <module name="docs" target="1.8" />
       <module name="hadoop-meta" target="1.8" />

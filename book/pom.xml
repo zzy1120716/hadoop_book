@@ -22,6 +22,7 @@
         <sqoop.version>1.4.6</sqoop.version>
         <pig.version>0.17.0</pig.version>
         <hive.version>1.2.2</hive.version>
+        <crunch.version>0.12.0-hadoop2</crunch.version>
     </properties>
 
     <dependencyManagement>
@@ -164,6 +165,18 @@
                         <artifactId>datanucleus-rdbms</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+
+            <!-- ch18 -->
+            <dependency>
+                <groupId>org.apache.crunch</groupId>
+                <artifactId>crunch-core</artifactId>
+                <version>${crunch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.crunch</groupId>
+                <artifactId>crunch-test</artifactId>
+                <version>${crunch.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

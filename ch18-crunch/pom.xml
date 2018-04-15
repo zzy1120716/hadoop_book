@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>hadoop-meta</artifactId>
+        <groupId>com.zzy.hadoopbook</groupId>
+        <version>4.0</version>
+        <relativePath>../hadoop-meta/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ch18-crunch</artifactId>
+    <packaging>jar</packaging>
+    <version>4.0</version>
+    <name>第18章：关于Crunch</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.crunch</groupId>
+            <artifactId>crunch-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.crunch</groupId>
+            <artifactId>crunch-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/hadoop-job.xml</descriptor>
+                    </descriptors>
+                    <finalName>crunch-examples</finalName>
+                    <outputDirectory>${project.build.directory}/..</outputDirectory>
+                    <appendAssemblyId>false</appendAssemblyId>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

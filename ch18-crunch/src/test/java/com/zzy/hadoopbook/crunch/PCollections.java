@@ -3,6 +3,8 @@ package com.zzy.hadoopbook.crunch;
 import static org.apache.crunch.types.writable.Writables.strings;
 
 import org.apache.crunch.*;
+import org.apache.crunch.types.PTableType;
+import org.apache.crunch.types.PTypeFamily;
 
 import java.util.Iterator;
 
@@ -49,5 +51,11 @@ public class PCollections {
                 return sb.toString();
             }
         }, strings()));
+    }
+
+    public static <K, V> PTable<V, K> invert(PTable<K, V> table) {
+        PTypeFamily tf = table.getTypeFamily();
+        PTableType<V, K> type = tf.tableOf(table.getValueType(), table.getKeyType());
+        return table.parallelDo(new InversePairFn<K, V>(), type);
     }
 }

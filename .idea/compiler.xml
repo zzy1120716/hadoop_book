@@ -18,12 +18,13 @@
         <module name="ch16-pig" />
         <module name="ch17-hive" />
         <module name="ch18-crunch" />
+        <module name="ch19-spark" />
         <module name="common" />
         <module name="docs" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
-      <module name="book" target="1.5" />
+      <module name="book" target="1.6" />
       <module name="ch02-mr-intro" target="1.8" />
       <module name="ch03-hdfs" target="1.8" />
       <module name="ch05-io" target="1.8" />
@@ -36,6 +37,7 @@
       <module name="ch16-pig" target="1.8" />
       <module name="ch17-hive" target="1.8" />
       <module name="ch18-crunch" target="1.8" />
+      <module name="ch19-spark" target="1.8" />
       <module name="common" target="1.8" />
       <module name="docs" target="1.8" />
       <module name="hadoop-meta" target="1.8" />

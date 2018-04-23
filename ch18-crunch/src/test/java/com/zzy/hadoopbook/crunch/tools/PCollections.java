@@ -1,7 +1,8 @@
-package com.zzy.hadoopbook.crunch;
+package com.zzy.hadoopbook.crunch.tools;
 
 import static org.apache.crunch.types.writable.Writables.strings;
 
+import com.zzy.hadoopbook.crunch.fn.InversePairFn;
 import org.apache.crunch.*;
 import org.apache.crunch.types.PTableType;
 import org.apache.crunch.types.PTypeFamily;

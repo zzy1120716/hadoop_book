@@ -1,18 +1,19 @@
 package com.zzy.hadoopbook.crunch.parser;
 
-import org.apache.hadoop.io.Text;
-
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.apache.hadoop.io.Text;
 
+// Serializable copy of NcdcRecordParser
 public class NcdcRecordParser implements Serializable {
 
     private static final int MISSING_TEMPERATURE = 9999;
 
-    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyyMMddHHmm");
+    private static final DateFormat DATE_FORMAT =
+            new SimpleDateFormat("yyyyMMddHHmm");
 
     private String stationId;
     private String observationDateString;
@@ -27,19 +28,17 @@ public class NcdcRecordParser implements Serializable {
         observationDateString = record.substring(15, 27);
         year = record.substring(15, 19);
         airTemperatureMalformed = false;
-        //去除起始的加号，从而使用parseInt(pre-Java 7)
-        if(record.charAt(87) == '+') {
+        // Remove leading plus sign as parseInt doesn't like them (pre-Java 7)
+        if (record.charAt(87) == '+') {
             airTemperatureString = record.substring(88, 92);
             airTemperature = Integer.parseInt(airTemperatureString);
-        } else if(record.charAt(87) == '-') {
+        } else if (record.charAt(87) == '-') {
             airTemperatureString = record.substring(87, 92);
             airTemperature = Integer.parseInt(airTemperatureString);
         } else {
-            //符号位不合法
             airTemperatureMalformed = true;
         }
         airTemperature = Integer.parseInt(airTemperatureString);
-        //温度的后一位表示数据是否合法
         quality = record.substring(92, 93);
     }
 
@@ -48,8 +47,8 @@ public class NcdcRecordParser implements Serializable {
     }
 
     public boolean isValidTemperature() {
-        //quality值为0,1,4,5,9时，温度合法
-        return ! airTemperatureMalformed && airTemperature != MISSING_TEMPERATURE && quality.matches("[01459]");
+        return !airTemperatureMalformed && airTemperature != MISSING_TEMPERATURE
+                && quality.matches("[01459]");
     }
 
     public boolean isMalformedTemperature() {
@@ -92,4 +91,5 @@ public class NcdcRecordParser implements Serializable {
     public String getQuality() {
         return quality;
     }
+
 }

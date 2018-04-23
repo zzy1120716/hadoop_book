@@ -10,6 +10,7 @@ import org.apache.crunch.fn.Aggregators;
 import org.apache.crunch.impl.mr.MRPipeline;
 import org.apache.crunch.io.To;
 
+// Crunch version of ch02-mr-intro MaxTemperature
 public class MaxTemperatureCrunch {
 
     public static void main(String[] args) throws Exception {

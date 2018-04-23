@@ -1,4 +1,4 @@
-package com.zzy.hadoopbook.crunch;
+package com.zzy.hadoopbook.crunch.fn;
 
 import org.apache.crunch.DoFn;
 import org.apache.crunch.Emitter;

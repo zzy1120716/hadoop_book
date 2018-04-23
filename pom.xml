@@ -22,7 +22,9 @@
         <module>ch13-parquet</module>
         <module>ch15-sqoop</module>
         <module>ch16-pig</module>
+        <module>ch17-hive</module>
         <module>docs</module>
         <module>ch18-crunch</module>
+        <module>ch19-spark</module>
     </modules>
 </project>

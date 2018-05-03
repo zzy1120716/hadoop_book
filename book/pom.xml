@@ -23,7 +23,12 @@
         <pig.version>0.17.0</pig.version>
         <hive.version>1.2.2</hive.version>
         <crunch.version>0.12.0-hadoop2</crunch.version>
-        <spark.version>2.3.0</spark.version>
+        <spark.version>1.2.2</spark.version>
+        <!--<spark.version>1.1.0</spark.version>-->
+        <scala.binary.version>2.11</scala.binary.version>
+        <scala.version>2.11</scala.version>
+        <hbase.version>0.98.7-hadoop2</hbase.version>
+        <zookeeper.version>3.4.6</zookeeper.version>
     </properties>
 
     <dependencyManagement>
@@ -188,9 +193,51 @@
             </dependency>
             <dependency>
                 <groupId>org.scalatest</groupId>
-                <artifactId>scalatest_2.10</artifactId>
+                <artifactId>scalatest_2.11</artifactId>
                 <version>2.2.0</version>
                 <scope>test</scope>
+            </dependency>
+
+            <!-- ch20 -->
+            <dependency>
+                <groupId>org.apache.hbase</groupId>
+                <artifactId>hbase-client</artifactId>
+                <version>${hbase.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hbase</groupId>
+                <artifactId>hbase-server</artifactId>
+                <version>${hbase.version}</version>
+            </dependency>
+
+            <!-- ch21 -->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.15</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.mail</groupId>
+                        <artifactId>mail</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>javax.jms</groupId>
+                        <artifactId>jms</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.sun.jdmk</groupId>
+                        <artifactId>jmxtools</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.sun.jmx</groupId>
+                        <artifactId>jmxri</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -272,6 +319,10 @@
                     <groupId>net.alchim31.maven</groupId>
                     <artifactId>scala-maven-plugin</artifactId>
                     <version>3.1.6</version>
+                    <configuration>
+                        <scalaCompatVersion>${scala.binary.version}</scalaCompatVersion>
+                        <scalaVersion>${scala.version}</scalaVersion>
+                    </configuration>
                     <executions>
                         <execution>
                             <goals>

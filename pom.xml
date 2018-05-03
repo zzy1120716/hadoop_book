@@ -26,5 +26,7 @@
         <module>docs</module>
         <module>ch18-crunch</module>
         <module>ch19-spark</module>
+        <module>ch20-hbase</module>
+        <module>ch21-zk</module>
     </modules>
 </project>

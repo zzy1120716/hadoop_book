@@ -37,7 +37,7 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar \
 1. WholeFileRecordReader用RecordReader将整个文件读为一条记录
 
 #### 测试SmallFilesToSequenceFileConverter
-1. mvn clean && mvn install
+1. mvn clean install
 2. hadoop fs -rm -r input && hadoop fs -put input && hadoop fs -rm -r output
 3. export HADOOP_CLASSPATH=../common/target/common-4.0.jar
 4. hadoop jar target/ch08-mr-types-4.0.jar SmallFilesToSequenceFileConverter \
@@ -56,7 +56,7 @@ input/smallfiles output
 
 #### 测试MaxTemperatureWithMultipleInputs
 在项目中增加类MaxTemperature等
-1. mvn clean && mvn install
+1. mvn clean install
 2. hadoop fs -rm -r input && hadoop fs -put input && hadoop fs -rm -r output
 3. export HADOOP_CLASSPATH=../common/target/common-4.0.jar:../ch06-mr-dev/hadoop-examples.jar
 4. hadoop jar target/ch08-mr-types-4.0.jar MaxTemperatureWithMultipleInputs \

@@ -204,7 +204,7 @@ filtered_records = FILTER records BY temperature != 9999 AND isGood(quality);
 
 #### Trim
 ```
-mvn clean && mvn package -DskipTests
+mvn clean package -DskipTests
 pig
 ```
 

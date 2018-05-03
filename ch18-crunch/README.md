@@ -89,7 +89,7 @@ dot target/pagerank-9.dot -T png -o pagerank-9.png
 ## 5. 案例
 ##### SortByTemperatureCrunch
 ```
-mvn clean && mvn package -DskipTests
+mvn clean package -DskipTests
 
 start-dfs.sh && start-dfs.sh && mr-jobhistory-daemon.sh start historyservers
 

@@ -58,7 +58,7 @@ java -jar $AVRO_HOME/avro-tools-1.8.2.jar tojson ch12-avro/output/pairs.avro
 1. 打包
 ```
 cd ch12-avro
-mvn clean && mvn package -DskipTests
+mvn clean package -DskipTests
 ```
 2. 声明环境变量
 ```
@@ -90,7 +90,7 @@ java -jar $AVRO_HOME/avro-tools-1.8.2.jar tojson input/avro/pairs.avro
 
 2. 打包
 ```
-mvn clean && mvn package -DskipTests
+mvn clean package -DskipTests
 ```
 
 3. 运行排序

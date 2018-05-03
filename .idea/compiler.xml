@@ -19,6 +19,8 @@
         <module name="ch17-hive" />
         <module name="ch18-crunch" />
         <module name="ch19-spark" />
+        <module name="ch20-hbase" />
+        <module name="ch21-zk" />
         <module name="common" />
         <module name="docs" />
       </profile>
@@ -38,6 +40,8 @@
       <module name="ch17-hive" target="1.8" />
       <module name="ch18-crunch" target="1.8" />
       <module name="ch19-spark" target="1.8" />
+      <module name="ch20-hbase" target="1.8" />
+      <module name="ch21-zk" target="1.8" />
       <module name="common" target="1.8" />
       <module name="docs" target="1.8" />
       <module name="hadoop-meta" target="1.8" />

@@ -55,3 +55,47 @@ src/main/python/MaxTemperature.py \
 input/ncdc/micro-tab/sample.txt output
 ```
 或使用 `pyspark`
+
+## 19.3 弹性分布式数据集(RDD)
+### 19.3.1 创建
+##### RDDCreationTest
+###### 错误：java.lang.IncompatibleClassChangeError: Found interface org.apache.hadoop.mapreduce.TaskAttemptContext, but class was expected
+###### 由于默认情况下使用hadoop1编译Avro，应将依赖改为hadoop2
+###### 即在avro-mapred的dependency中增加一行
+`<classifier>hadoop2</classifier>`
+
+### 19.3.2 转换和动作
+##### TransformationsAndActionsTest
+
+### 19.3.3 持久化
+##### SimpleTest
+
+### 19.3.4 序列化
+##### CustomKryoRegistrator
+##### ReflectWeatherRecord
+##### DataSerializationTest
+##### FunctionSerializationTest
+
+## 19.4 共享变量
+### 19.4.1 广播变量
+### 19.4.2 累加器
+##### SharedDataTest
+
+## 19.5 剖析Spark作业运行机制
+### 19.5.2 DAG的构建
+##### WordCountHistogramTest
+
+## 19.6 执行器和集群管理器
+##### MaxTemperatureWithPlacement，SparkContext第二个参数传递一个优选位置
+```
+spark-submit --class MaxTemperatureWithPlacement --master local \
+spark-examples.jar input/ncdc/micro-tab/sample.txt output
+```
+
+##### 运行SimpleTest.test()时出现错误:
+##### java.lang.NoSuchMethodError: scala.Predef$.refArrayOps([Ljava/lang/Object;)Lscala/collection/mutable/ArrayOps;
+##### 原因：scalatest版本与scala compiler版本不一致
+Project Structure -> Global Libraries
+
+##### java.lang.NoSuchMethodError: io.netty.buffer.PooledByteBufAllocator.metric()Lio/netty/buffer/PooledByteBufAllocatorMetric;
+把spark版本从2.3.0改为1.2.2，spark-1.x.x和spark-2.x.x很多API都不一样

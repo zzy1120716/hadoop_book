@@ -1,5 +1,5 @@
 #### 测试MaxTemperatureWithCounters
-1. mvn clean && mvn install
+1. mvn clean install
 2. hadoop fs -rm -r input && hadoop fs -put input && hadoop fs -rm -r output-counters
 3. hadoop jar target/ch09-mr-features-4.0.jar MaxTemperatureWithCounters \
 input/ncdc/all output-counters
@@ -9,7 +9,7 @@ input/ncdc/all output-counters
 hadoop jar target/ch09-mr-features-4.0.jar MissingTemperatureFields job_xxx_xxxx
 
 #### SortDataPreprocessor将天气数据转成SequenceFile格式
-1. mvn clean && mvn install
+1. mvn clean install
 2. hadoop fs -rm -r input && hadoop fs -put input && hadoop fs -rm -r input/ncdc/all-seq
 3. hadoop jar target/ch09-mr-features-4.0.jar SortDataPreprocessor input/ncdc/all \
 input/ncdc/all-seq
@@ -86,7 +86,7 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar \
 hadoop fs -cat out_mean_max_daily/part-00000
 
 #### JoinRecordWithStationName
-mvn clean && mvn install -DskipTests
+mvn clean install -DskipTests
 
 hadoop fs -rm -r output-join
 
@@ -96,7 +96,7 @@ input/ncdc/all input/ncdc/metadata output-join
 hadoop fs -cat output-join/part-r-00000
 
 #### MaxTemperatureByStationNameUsingDistributedCacheFile
-mvn clean && mvn install -DskipTests
+mvn clean install -DskipTests
 
 hadoop fs -rm -r output-cache
 

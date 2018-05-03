@@ -45,7 +45,7 @@ where <input> is the parquet file to print to stdout
 #### TextToParquetWithExample
 1. 打包
 ```
-mvn clean && mvn package -DskipTests
+mvn clean package -DskipTests
 ```
 2. 运行
 ```

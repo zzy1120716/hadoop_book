@@ -20,9 +20,9 @@ vi /Users/zzy/hive/conf/hive-site.xml
 <configuration>
     <property>
         <name>javax.jdo.option.ConnectionURL</name>
-        <value>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true</value>
+        <value>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true&amp;autoReconnect=true&amp;useSSL=false</value>
     </property>
-
+    
     <property>
         <name>javax.jdo.option.ConnectionDriverName</name>
         <value>com.mysql.jdbc.Driver</value>

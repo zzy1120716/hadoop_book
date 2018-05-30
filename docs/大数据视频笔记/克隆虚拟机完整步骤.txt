@@ -1,0 +1,23 @@
+1、修改主机名(重启后永久生效)
+vi /etc/sysconfig/network
+
+2、解决克隆后eth0不见的问题
+
+直接修改  /etc/sysconfig/network-script/ifcfg-eth0
+删掉UUID  HWADDR
+配置静态地址
+然后：
+rm -rf 　/etc/udev/rules.d/70-persistent-net.rules
+然后 reboot
+
+3、修改/etc/hosts文件
+
+4、配置主机之间的免密ssh登陆
+假如 A  要登陆  B
+在A上操作：
+%%首先生成密钥对
+   (提示时，直接回车即可)
+ssh-keygen
+%%再将A自己的公钥拷贝并追加到B的授权列表文件authorized_keys中
+ssh-copy-id   B
+

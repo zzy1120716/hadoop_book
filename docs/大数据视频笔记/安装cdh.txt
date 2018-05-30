@@ -1,0 +1,26 @@
+1、下载CDH安装脚本
+yum -y install wget
+wget http://archive.cloudera.com/cm5/installer/5.14.3/cloudera-manager-installer.bin
+chmod u+x cloudera-manager-installer.bin
+sudo ./cloudera-manager-installer.bin
+
+2、关闭SELINUX
+vi /etc/selinux/config
+修改SELINUX=disabled，重启
+
+3、配置代理
+vi /etc/profile
+
+http_proxy=http://10.103.241.213:1080/
+ftp_proxy=http://10.103.241.213:1080/
+export http_proxy
+export ftp_proxy
+
+source /etc/profile
+
+4、关闭防火墙
+service iptables stop
+
+5、输入网址http://192.168.32.91:7180
+用户名、密码均为admin
+搜索主机：cdh[1-3]

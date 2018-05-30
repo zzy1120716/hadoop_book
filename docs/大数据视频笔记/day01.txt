@@ -1,0 +1,33 @@
+day01 Linux安装
+vnet8虚拟网关：192.168.32.0
+虚拟NAT路由地址：192.168.32.2
+node1 192.168.32.80
+node2 192.168.32.81
+
+[root@node1 ~]# vi /etc/sysconfig/network-scripts/ifcfg-eth0 
+DEVICE=eth0
+HWADDR=00:0c:29:06:ab:de
+TYPE=Ethernet
+UUID=d13895ba-f035-4686-bc59-e1c3b2fb1c22
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=static
+IPADDR=192.168.32.80
+NETMASK=255.255.255.0
+GATEWAY=192.168.32.2
+DNS1=192.168.32.2
+USERCTL=no
+PEERDNS=yes
+IPV6INIT=no
+
+yum -y install openssh-clients
+
+day02
+01 -- 机器克隆 安装最小化版本
+
+day31
+04 SparkSQL介绍
+
+day13
+hive/flume/sqoop/azkaban
+05.sqoop导入导出(3点38到4点09)_ 20:30

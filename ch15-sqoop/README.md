@@ -12,6 +12,11 @@ sqoop-help
 ```
 cd /User/zzy/sqoop/conf
 cp sqoop-env-template.sh sqoop-env.sh
+vi sqoop-env.sh
+
+export HADOOP_COMMON_HOME=/Users/zzy/hadoop
+export HADOOP_MAPRED_HOME=/Users/zzy/hadoop
+export HIVE_HOME=/Users/zzy/hive
 ```
 
 #### 添加MySQL Java Connector

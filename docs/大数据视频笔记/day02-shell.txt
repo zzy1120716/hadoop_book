@@ -1,22 +1,25 @@
+一、基本命令
+1、执行前进行授权：chmod +x testdot.sh
+
 ./testdot.sh和. ./testdot.sh的区别
 系统变量：$HOME, $PWD, $SHELL, $USER
 set命令显示当前shell中所有变量
 
-等号两侧不能有空格
+2、等号两侧不能有空格
 变量名称一般习惯为大写
 双引号将空格、换行、反斜杠等脱意
 单引号可以将所有字符脱意
 
-unset A 撤销变量A
+3、unset A 撤销变量A
 readonly B=2 声明静态变量，不能unset
 export 变量名，将变量提升为全局变量
 source 文件名，执行文件中所有export指令
 
-将命令的返回值赋给变量
+4、将命令的返回值赋给变量
 A=`ls -la`，反引号，执行其中的命令，并将执行结果保存在变量中
 A=$(ls -la)，与反引号等价
 
-特殊变量
+5、特殊变量
 $?表示上一条命令退出的状态，0表示成功执行
 $$表示当前进程编号
 $0表示当前脚本名称
@@ -31,7 +34,12 @@ $*与$@的区别？
 res=`expr 2 + 3`做算术运算
 或$(((2+3)*4))
 
-for循环
+6、read命令
+read -p(提示语句) -n(字符个数) -t(等待时间)
+read -p "please enter a number: " numb
+
+二、流程控制
+1、for循环
 第一种：
 for N in 1 2 3
 do
@@ -49,7 +57,7 @@ done
 或
 for((i=0;i<=5;i++));do echo "welcome $i times";done
 
-while循环
+2、while循环
 第一种：
 while expression
 do
@@ -64,4 +72,86 @@ do
     let i++
 done
 
-case语句
+3、case语句
+case $1 in
+start)
+    echo "starting"
+    ;;
+stop)
+    echo "stopping"
+    ;;
+*)
+    echo "Usage:{start|stop}"
+esac
+
+4、if判断
+if [ $NAME = root ]
+    then
+        echo "hello ${NAME}, welcome!"
+    elif [ $NAME = itcast ]
+        then
+            echo "hello ${NAME}, welcome!"
+    else
+        echo "get out here!"
+fi
+
+判断语句：
+[ condition ] && echo OK
+条件满足，执行后面的语句
+[ condition ] && echo OK || echo notOK
+
+常用判断条件：
+字符串比较：
+= 等于
+数字比较：
+-lt 小于
+-le 小于等于
+-eq 等于
+-gt 大于
+-ge 大于等于
+-ne 不等于
+
+-r 是否有读权限
+-w 写
+-x 执行
+-f 文件存在并且是一个常规的文件
+-s 存在且不为空
+-d 文件存在并且是一个目录
+-b 块设备
+-L 链接
+
+三、Shell自定义函数
+[ function ] funname [()]
+{
+    action;
+    [return int;]
+}
+
+function start() / function start / start() 
+
+$?取返回值，之后$?是函数中语句执行结果，0为成功，一般1为程序的业务逻辑出错
+
+四、脚本调试
+sh -vx helloworld.sh
+或者在脚本中增加set -x
+
+wc -c helloworld.sh | cut -d ' ' -f 1
+
+五、非常有用的文本处理命令
+cut
+sed
+awk
+
+cat /etc/passwd | sort
+cat /etc/passwd | sort -t ':' -k 3 字典序
+cat /etc/passwd | sort -t ':' -k 3n 数字大小
+cat /etc/passwd | sort -t ':' -k 3nr 倒序
+
+uniq 去除排序过的文件的重复行，与sort一起使用
+
+cat testfile | sort | uniq
+cat testfile | sort | uniq -c 统计重复数量
+
+wc -l /etc/passwd 统计行数
+wc -w /etc/passwd 统计单词出现次数
+wc -m /etc/passwd 统计文件的字符数

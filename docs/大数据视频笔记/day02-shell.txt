@@ -155,3 +155,14 @@ cat testfile | sort | uniq -c 统计重复数量
 wc -l /etc/passwd 统计行数
 wc -w /etc/passwd 统计单词出现次数
 wc -m /etc/passwd 统计文件的字符数
+
+sed '2d' example    删除example文件的第二行
+sed '/test/'d example   三处所有包含test的行
+sed 's/test/mytest/g' example  全局替换
+
+sed 's/192.168.0.1/&localhost/g' example  把localhost拼到192.168.0.1后面
+
+
+awk
+last -n 5 | awk '{print $1}'
+cat /etc/passwd | awk -F ':' '{print $1"\t"$7}'

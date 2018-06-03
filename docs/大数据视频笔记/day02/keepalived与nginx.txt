@@ -1,0 +1,5 @@
+Keepalived并不跟nginx耦合，它俩不是一家人
+但Keepalived提供一个机制：
+让用户自定义一个shell脚本去检测用户自己的程序，返回状态给keepalived就可以了
+
+ip addr

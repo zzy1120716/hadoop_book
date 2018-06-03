@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ch00-java-adv-features" />
         <module name="ch02-mr-intro" />
         <module name="ch03-hdfs" />
         <module name="ch05-io" />
@@ -27,6 +28,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="book" target="1.6" />
+      <module name="ch00-java-adv-features" target="1.8" />
       <module name="ch02-mr-intro" target="1.8" />
       <module name="ch03-hdfs" target="1.8" />
       <module name="ch05-io" target="1.8" />

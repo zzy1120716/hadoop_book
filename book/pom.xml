@@ -28,7 +28,7 @@
         <scala.binary.version>2.11</scala.binary.version>
         <scala.version>2.11</scala.version>
         <hbase.version>0.98.7-hadoop2</hbase.version>
-        <zookeeper.version>3.4.6</zookeeper.version>
+        <zookeeper.version>3.4.9</zookeeper.version>
     </properties>
 
     <dependencyManagement>

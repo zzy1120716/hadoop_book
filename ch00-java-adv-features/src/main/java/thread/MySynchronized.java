@@ -1,3 +1,5 @@
+package thread;
+
 public class MySynchronized {
 
     public static void main(String[] args) {

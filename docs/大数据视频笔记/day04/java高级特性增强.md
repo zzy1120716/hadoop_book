@@ -20,6 +20,13 @@ cpu在线程中的时间片的切换，并非同时
 java.util.concurent.lock
 ##### TryLock/LockInterruptbly/ReadWriteLock
 
+#### 线程池的5种创建方式
+1. Single Thread Executor
+2. Cached Thread Pooll
+3. Fixed Thread Pool
+4. Scheduled Thread Pool
+5. Single Thread Scheduled Pool
+
 ## Java并发包
 
 ## Java JMS技术

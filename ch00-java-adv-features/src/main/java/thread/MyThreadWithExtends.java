@@ -1,3 +1,5 @@
+package thread;
+
 import java.util.Random;
 
 public class MyThreadWithExtends extends Thread {

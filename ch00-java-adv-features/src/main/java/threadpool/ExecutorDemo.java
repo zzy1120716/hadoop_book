@@ -1,0 +1,48 @@
+package threadpool;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+/*
+ * 线程池的好处：线程池里的每一个线程代码结束后，并不会死亡，
+ * 而是再次回到线程池中称为空闲状态，等待下一个对象来使用
+ *
+ * 如何实现线程池的代码呢？
+ *      A:创建一个线程池对象，控制要创建几个线程对象
+ *          public static ExecutorService newFixedThreadPool(int nThreads)
+ *      B:这种线程池的线程可以执行：
+ *              可以执行RUnnable对象或者Callable对象代理的线程
+ *      C:调用如下方法即可
+ *              Future<?> submit(Runnable task)
+ *              <T> Future
+ */
+public class ExecutorDemo {
+
+    public static void main(String[] args) {
+        //创建一个线程池对象，控制要创建几个线程对象
+        //public static ExecutorService newFixedThreadPool(int nThreads)
+        ExecutorService pool=Executors.newFixedThreadPool(2);
+
+        //可以执行Runnable对象或者Callable对象代理的线程
+        pool.submit(new Runnable() {
+            @Override
+            public void run() {
+                for(int x=0;x<100;x++) {
+                    System.out.println(Thread.currentThread().getName()+":"+x);
+                }
+            }
+        });
+        pool.submit(new Runnable() {
+            @Override
+            public void run() {
+                for(int x=0;x<100;x++) {
+                    System.out.println(Thread.currentThread().getName()+":"+x);
+                }
+            }
+        });
+
+        //结束线程池
+        pool.shutdown();
+
+    }
+}

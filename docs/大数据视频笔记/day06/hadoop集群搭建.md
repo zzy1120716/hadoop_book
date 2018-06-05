@@ -149,5 +149,6 @@ ssh-copy-id mini4
 
 #### 现在可以使用命令启动/停止所有节点
 ```
-start-dfs.sh && start-yarn.sh
+start-dfs.sh
+start-yarn.sh
 ```

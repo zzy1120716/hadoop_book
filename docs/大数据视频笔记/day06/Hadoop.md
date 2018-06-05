@@ -9,3 +9,11 @@ Nutch：HDFS、HBASE、MapReduce
 浏览器中查看网络请求，可以看到类似"log.gif?sc=xxx"的请求，就是用来返回给服务器，做行为分析的 
 
 获取方式：在网页中埋一段js代码
+
+#### hadoop shell
+```
+hadoop fs -ls /
+hadoop fs -put hello.txt /
+hadoop fs -ls /
+hadoop fs -cat /hello.txt
+```

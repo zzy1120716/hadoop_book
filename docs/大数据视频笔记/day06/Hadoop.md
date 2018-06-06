@@ -16,6 +16,7 @@ hadoop fs -ls /
 hadoop fs -put hello.txt /
 hadoop fs -ls /
 hadoop fs -cat /hello.txt
+<<<<<<< HEAD
 
 hadoop fs -put zookeeper.out /wordcount/input
 cd apps/hadoop-2.8.4/share/hadoop/mapreduce
@@ -44,3 +45,6 @@ VM Options
 -DHADOOP_USER_NAME=hadoop
 ```
 
+=======
+```
+>>>>>>> origin/master

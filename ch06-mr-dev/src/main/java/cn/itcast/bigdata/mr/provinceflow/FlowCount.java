@@ -1,12 +1,8 @@
-package cn.itcast.bigdata.mr.flowsum;
+package cn.itcast.bigdata.mr.provinceflow;
 
-import cn.itcast.bigdata.mr.provinceflow.ProvincePartitioner;
-import cn.itcast.bigdata.mr.wcdemo.WordcountDriver;
-import cn.itcast.bigdata.mr.wcdemo.WordcountMapper;
-import cn.itcast.bigdata.mr.wcdemo.WordcountReducer;
+import cn.itcast.bigdata.mr.flowsum.FlowBean;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -16,9 +12,6 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 
 public class FlowCount {
 
@@ -44,8 +37,6 @@ public class FlowCount {
 
     static class FlowCountReducer extends Reducer<Text, FlowBean, Text, FlowBean> {
 
-        // TreeMap<FlowBean, Text> treeMap = new TreeMap<FlowBean, Text>();
-
         // <13833333,bean1><13833333,bean2><13833333,bean3><13833333,bean4>......
         @Override
         protected void reduce(Text key, Iterable<FlowBean> values, Context context) throws IOException, InterruptedException {
@@ -60,21 +51,9 @@ public class FlowCount {
             }
 
             FlowBean resultBean = new FlowBean(sum_upFlow, sum_dFlow);
-
-            /*treeMap.put(resultBean, key);
-            Set<Map.Entry<FlowBean, Text>> entrySet = treeMap.entrySet();
-            for (Map.Entry<FlowBean, Text> ent : entrySet) {
-                context.write(ent.getValue(), ent.getKey());
-            }*/
-
             context.write(key, resultBean);
 
         }
-
-        /*@Override
-        protected void cleanup(Context context) throws IOException, InterruptedException {
-
-        }*/
     }
 
     public static void main(String[] args) throws Exception {
@@ -92,6 +71,11 @@ public class FlowCount {
         // 指定本业务job要使用的mapper、reducer业务类
         job.setMapperClass(FlowCountMapper.class);
         job.setReducerClass(FlowCountReducer.class);
+
+        // 指定我们自定义的数据分区器
+        job.setPartitionerClass(ProvincePartitioner.class);
+        // 同时指定相应“分区”数量的reducetask
+        job.setNumReduceTasks(5);
 
         // 指定mapper输出数据的kv类型
         job.setMapOutputKeyClass(Text.class);

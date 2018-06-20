@@ -14,12 +14,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 //MaxTemperatureDriver的测试，运行在一个mini HDFS和MapReduce集群上
-public class MaxTemperatureDriverMiniTest extends ClusterMapReduceTestCase {
+public class MaxTemperatureDriverMiniTest {
+        //extends ClusterMapReduceTestCase {
 
     /*
      * 静态嵌套类，实现官方PathFilter接口
      * 过滤掉输出文件中以"_"为开头的文件
      * */
+
+    /*
     public static class OutputLogFilter implements PathFilter {
         public boolean accept(Path path) {
             return !path.getName().startsWith("_");
@@ -65,4 +68,5 @@ public class MaxTemperatureDriverMiniTest extends ClusterMapReduceTestCase {
         assertThat(reader.readLine(), nullValue());
         reader.close();
     }
+    */
 }

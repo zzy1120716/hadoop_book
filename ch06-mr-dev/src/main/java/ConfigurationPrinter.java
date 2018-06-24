@@ -11,11 +11,11 @@ public class ConfigurationPrinter extends Configured implements Tool {
     //因为Configuration已经获取了核心配置
     static {
         Configuration.addDefaultResource("hdfs-default.xml");
-        Configuration.addDefaultResource("hdfs-site.xml");
+        Configuration.addDefaultResource("conf/shizhan03/hdfs-site.xml");
         Configuration.addDefaultResource("yarn-default.xml");
-        Configuration.addDefaultResource("yarn-site.xml");
+        Configuration.addDefaultResource("conf/shizhan03/yarn-site.xml");
         Configuration.addDefaultResource("mapred-default.xml");
-        Configuration.addDefaultResource("mapred-site.xml");
+        Configuration.addDefaultResource("conf/shizhan03/mapred-site.xml");
     }
 
     //@Override

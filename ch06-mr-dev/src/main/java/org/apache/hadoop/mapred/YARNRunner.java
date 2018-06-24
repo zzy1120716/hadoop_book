@@ -253,11 +253,11 @@ public class YARNRunner implements ClientProtocol {
         ByteBuffer securityTokens = ByteBuffer.wrap(dob.getData(), 0, dob.getLength());
         List<String> vargs = new ArrayList(8);
         // TODO 注释原来的代码
-        // vargs.add(MRApps.crossPlatformifyMREnv(jobConf, Environment.JAVA_HOME) + "/bin/java");
+        vargs.add(MRApps.crossPlatformifyMREnv(jobConf, Environment.JAVA_HOME) + "/bin/java");
         // TODO 修改环境配置，从而在windows本地执行mapreduce任务
-        System.out.println(MRApps.crossPlatformifyMREnv(jobConf, Environment.JAVA_HOME) + "/bin/java");
+        /*System.out.println(MRApps.crossPlatformifyMREnv(jobConf, Environment.JAVA_HOME) + "/bin/java");
         System.out.println("$JAVA_HOME/bin/java");
-        vargs.add("$JAVA_HOME/bin/java");
+        vargs.add("$JAVA_HOME/bin/java");*/
 
         long logSize = jobConf.getLong("yarn.app.mapreduce.am.container.log.limit.kb", 0L) << 10;
         String logLevel = jobConf.get("yarn.app.mapreduce.am.log.level", "INFO");
@@ -297,11 +297,11 @@ public class YARNRunner implements ClientProtocol {
         acls.put(ApplicationAccessType.MODIFY_APP, jobConf.get("mapreduce.job.acl-modify-job", " "));
 
         // TODO BY ZZY
-        for (String key : environment.keySet()) {
+        /*for (String key : environment.keySet()) {
             String org = environment.get(key);
             String linux = getLinux(org);
             environment.put(key, linux);
-        }
+        }*/
 
         ContainerLaunchContext amContainer = ContainerLaunchContext.newInstance(localResources, environment, vargsFinal, (Map)null, securityTokens, acls);
         Collection<String> tagsFromConf = jobConf.getTrimmedStringCollection("mapreduce.job.tags");
@@ -322,7 +322,7 @@ public class YARNRunner implements ClientProtocol {
     }
 
     // TODO BY ZZY
-    private String getLinux(String org) {
+    /*private String getLinux(String org) {
         StringBuilder sb = new StringBuilder();
         int c = 0;
         for (int i = 0; i < org.length(); i++) {
@@ -347,7 +347,7 @@ public class YARNRunner implements ClientProtocol {
             }
         }
         return (sb.toString());
-    }
+    }*/
 
     public void setJobPriority(JobID arg0, String arg1) throws IOException, InterruptedException {
         this.resMgrDelegate.setJobPriority(arg0, arg1);

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="udf">
+    <output-path>$PROJECT_DIR$/out/artifacts/udf</output-path>
+    <root id="archive" name="udf.jar">
+      <element id="module-output" name="ch17-hive" />
+    </root>
+  </artifact>
+</component>

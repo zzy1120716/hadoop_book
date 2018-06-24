@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="flowsum">
-    <output-path>$PROJECT_DIR$/out/artifacts/flowsum</output-path>
-    <root id="archive" name="flowsum.jar">
-      <element id="module-output" name="ch06-mr-dev" />
-    </root>
-  </artifact>
-</component>

@@ -76,6 +76,10 @@ username: hadoop (默认为启动hive的用户名)
 password: 直接回车
 ```
 
+```
+beeline -u jdbc:hive2://localhost:10000 -n zzy
+```
+
 #### 创建外部表
 ```
 0: jdbc:hive2://localhost:10000> create external table t_sz_ext(id int,name string)

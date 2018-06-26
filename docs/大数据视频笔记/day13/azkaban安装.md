@@ -130,7 +130,9 @@ executor.flow.threads=30                                                        
 
 启动：
 ```
+cd /home/hadoop/azkaban/server
 bin/azkaban-web-start.sh
+cd /home/hadoop/azkaban/executor
 bin/azkaban-executor-start.sh
 ```
 启动（后台运行）：

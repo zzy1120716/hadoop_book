@@ -262,7 +262,7 @@ public class YARNRunner implements ClientProtocol {
         long logSize = jobConf.getLong("yarn.app.mapreduce.am.container.log.limit.kb", 0L) << 10;
         String logLevel = jobConf.get("yarn.app.mapreduce.am.log.level", "INFO");
         int numBackups = jobConf.getInt("yarn.app.mapreduce.am.container.log.backups", 0);
-        MRApps.addLog4jSystemProperties(logLevel, logSize, numBackups, vargs);
+        //MRApps.addLog4jSystemProperties(logLevel, logSize, numBackups, vargs);
         warnForJavaLibPath(this.conf.get("mapreduce.map.java.opts", ""), "map", "mapreduce.map.java.opts", "mapreduce.map.env");
         warnForJavaLibPath(this.conf.get("mapreduce.admin.map.child.java.opts", ""), "map", "mapreduce.admin.map.child.java.opts", "mapreduce.admin.user.env");
         warnForJavaLibPath(this.conf.get("mapreduce.reduce.java.opts", ""), "reduce", "mapreduce.reduce.java.opts", "mapreduce.reduce.env");

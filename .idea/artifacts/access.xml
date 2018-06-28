@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="access">
+    <output-path>$PROJECT_DIR$/out/artifacts/access</output-path>
+    <root id="archive" name="access.jar">
+      <element id="module-output" name="ch06-mr-dev" />
+    </root>
+  </artifact>
+</component>

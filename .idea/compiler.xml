@@ -24,6 +24,7 @@
         <module name="ch21-zk" />
         <module name="common" />
         <module name="docs" />
+        <module name="interview" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
@@ -47,6 +48,7 @@
       <module name="common" target="1.8" />
       <module name="docs" target="1.8" />
       <module name="hadoop-meta" target="1.8" />
+      <module name="interview" target="1.6" />
       <module name="root" target="1.5" />
     </bytecodeTargetLevel>
   </component>

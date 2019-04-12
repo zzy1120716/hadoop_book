@@ -29,5 +29,6 @@
         <module>ch20-hbase</module>
         <module>ch21-zk</module>
         <module>ch00-java-adv-features</module>
+        <module>interview</module>
     </modules>
 </project>

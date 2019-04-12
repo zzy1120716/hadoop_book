@@ -72,8 +72,8 @@ export HBASE_MANAGES_ZK=false
 
 4. 把hadoop的 hdfs-site.xml 和 core-site.xml 放到hbase/conf下
 ```
-cp /home/hadoop/apps/hadoop-2.8.4/etc/hadoop/hdfs-site.xml
-cp /home/hadoop/apps/hadoop-2.8.4/etc/hadoop/core-site.xml
+cp /home/hadoop/apps/hadoop-2.8.4/etc/hadoop/hdfs-site.xml .
+cp /home/hadoop/apps/hadoop-2.8.4/etc/hadoop/core-site.xml .
 ```
 
 #### 3. 分配到其他机器
@@ -95,7 +95,7 @@ start-hbase.sh
     进程：jps
     进入hbase的shell：hbase shell
     退出hbase的shell：quit
-    页面：http://master:60010/ 
+    页面：http://mini1:60010/ 
 
 ### 2. 配置HMaster的主备(双主节点)
 ```
@@ -106,4 +106,24 @@ local-master-backup.sh start 2
 1. 复制原子节点到新节点
 ```
 hbase-daemon.sh start regionserver
+```
+
+2. 删除节点
+```
+jps
+kill -9 进程号
+```
+
+3. 通过zookeeper查看节点
+```
+zkCli.sh
+ls /hbase/rs
+```
+
+### 4. HBase命令行
+```
+hbase shell
+help
+list
+
 ```

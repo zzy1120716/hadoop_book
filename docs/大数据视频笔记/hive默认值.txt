@@ -1,0 +1,5 @@
+hive.enforce.bucketing=false
+mapreduce.job.reduces=-1
+hive.exec.mode.local.auto=false
+hive.exec.dynamic.partition=true
+hive.exec.dynamic.partition.mode=strict

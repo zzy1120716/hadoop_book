@@ -30,5 +30,6 @@
         <module>ch21-zk</module>
         <module>ch00-java-adv-features</module>
         <module>interview</module>
+        <module>kafka_example</module>
     </modules>
 </project>

@@ -40,4 +40,10 @@ staytime：用户在此基站的逗留时间。
 13429100087 22705 8 2013-03-11 08:56:51.139539816 571 571 220 571
 13429100087 22540 8 2013-03-11 08:55:45.150276800 571 571 66 571
      */
+
+    /*
+select product_no, lac_id, moment, start_time, user_id, county_id, staytime, city_id from stay distribute by product_no sort by product_no asc, start_time asc;
+
+select product_no, lac_id, moment, start_time, user_id, county_id, staytime, city_id from stay cluster by product_no, start_time;
+     */
 }
